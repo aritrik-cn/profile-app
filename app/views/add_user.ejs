@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  <% if (data[0].pass) { %> <a href="home"> Home </a> <% } %>
+  	<form name="add user" method="post" >
+	  	<table>
+	  		<tr>
+	  			<td>Email</td>
+	  			<td>:</td>
+	  			<td><input type="text" name="email" readonly value="<%= data[0].email %>"></td>
+	  		</tr>
+	  		<tr>
+	  			<td>User Name</td>
+	  			<td>:</td>
+	  			<td><input type="text" name="uname" <% if (data[0].uname) { %> value="<%= data[0].uname %>" readonly <% } %> required></td>
+	  		</tr>
+	  		<tr>
+	  			<td> <% if (data[0].pass) { %> New Password <% } else { %> Password <% } %></td>
+	  			<td>:</td>
+	  			<td><input type="password" name="pass" value="" required></td>
+	  		</tr>
+	  		<tr>
+	  			<td></td>
+	  			<td></td>
+	  			<td><input type="submit"></td>
+	  		</tr>
+	  		<tr>
+	  			<td></td>
+	  			<td></td>
+	  			<td><%= msg %></td>
+	  		</tr>
+	  	</table>
+	</form>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+    <script type="text/javascript">
+      function showRecaptcha(element) {
+        Recaptcha.create("6Lcs4-kSAAAAALK0dYkN8flAGKdz6-xgoFCZPsSI", element, {
+          theme: "clean",
+          callback: Recaptcha.focus_response_field
+        });
+      }
+    </script>
+  </head>
+  <body onload="showRecaptcha('recaptcha_div');">
+  	<form name="forgot password" method="post" >
+	  	<table>
+	  		<tr>
+	  			<td>Please Provide Your Email</td>
+	  			<td>:</td>
+	  			<td><input type="email" name="email" required placeholder='Your Email ID'></td>
+	  		</tr>
+	  		<tr>
+	  			<td>Captcha</td>
+	  			<td>:</td>
+	  			<td><div id="recaptcha_div"></div>
+					<noscript>
+						<iframe src="http://www.google.com/recaptcha/api/noscript?k=6Lcs4-kSAAAAALK0dYkN8flAGKdz6-xgoFCZPsSI"
+						height="300" width="500" frameborder="0"></iframe><br>
+						<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+						<input type="hidden" name="recaptcha_response_field"
+						value="manual_challenge">
+					</noscript>
+	  			</td>
+	  		</tr>
+	  		<tr>
+	  			<td> </td>
+	  			<td> </td>
+	  			<td><input type="submit" value="Get Password"></td>
+	  		</tr>
+	  	</table>
+	  	<%= msg %>
+	</form>
+  </body>
+</html>
