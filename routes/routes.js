@@ -50,7 +50,7 @@ module.exports = function (app) {
 
 	//Render Forgot Password Page
 	app.get('/forgotpass', function (req, res) {
-		res.render('forgotpass', {title: "Forgot Password", msg: ""})
+		res.render('forgotpass', {title: "Forgot Password", msg: "", login: ''})
 	});
 
 	// POST Forgot password Data

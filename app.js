@@ -2,14 +2,15 @@
 /**
  * Module dependencies.
  */
-GLOBAL.config = require(process.cwd() + '/config/config') [process.env.NODE_ENV || "dev"];
-//console.log("Config : " + JSON.stringify(GLOBAL.config, null, 4));
-
 var express = require('express');
 var app 	= express();
 var http 	= require('http');
 var path 	= require('path');
-//var io		= require(process.cwd() + '/config/socket')(app);
+
+//Define Global Varriabls
+GLOBAL.config = require(process.cwd() + '/config/config').index [process.env.NODE_ENV || "dev"];
+//console.log("Config : " + JSON.stringify(GLOBAL.config, null, 4));
+
 
 // all environments
 app.set('views', path.join(__dirname, 'app/views'));

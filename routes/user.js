@@ -3,6 +3,14 @@
  * GET users listing.
  */
 
-exports.list = function(req, res){
-  res.send("respond with a resource");
-};
+exports.authUserdata = function (req, res) {
+	if (req.session.user) {
+		{	login: {
+				authUser 	: "true",
+				authUname	: req.session.user
+			}
+		};
+	} else {
+
+	}
+}

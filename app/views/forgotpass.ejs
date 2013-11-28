@@ -1,32 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/assets/css/bootstrap.css' />
-    <link rel='stylesheet' href='/assets/css/bootstrap-theme.css' />
-    <script type="text/javascript" src='/assets/js/bootstrap.min.js'></script>
-    <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
-    <script type="text/javascript">
-      function showRecaptcha(element) {
-        Recaptcha.create("6Lcs4-kSAAAAALK0dYkN8flAGKdz6-xgoFCZPsSI", element, {
-          theme: "clean",
-          callback: Recaptcha.focus_response_field
-        });
-      }
-    </script>
-  </head>
-  <body onload="showRecaptcha('recaptcha_div');">
-  	<form name="forgot password" method="post" >
-	  	<table>
-	  		<tr>
-	  			<td>Please Provide Your Email</td>
-	  			<td>:</td>
-	  			<td><input type="email" name="email" required placeholder='Your Email ID'></td>
-	  		</tr>
-	  		<tr>
-	  			<td>Captcha</td>
-	  			<td>:</td>
-	  			<td><div id="recaptcha_div"></div>
+	<head>
+		<% include include/header %>
+		<script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+		<script type="text/javascript">
+		function showRecaptcha(element) {
+			Recaptcha.create("6Lcs4-kSAAAAALK0dYkN8flAGKdz6-xgoFCZPsSI", element, {
+				theme: "clean",
+				callback: Recaptcha.focus_response_field
+			});
+		}
+	</script>
+	</head>
+  	<body onload="showRecaptcha('recaptcha_div');">
+		<div class="container" >
+	  		<div class="header">
+		        <% include include/menu %>
+		        <h3 class="text-muted"><%= title %></h3>
+	      	</div>
+			<form class="form-signin" style="max-width: 330px;padding: 15px;margin: 0 auto;" name="add user" method="post">
+				<h2 class="form-signin-heading">Get Password.</h2>
+				<input type="email" name="email" class="form-control" placeholder='Your Email ID' required="" autofocus="">
+				<label id="recaptcha_div">
 					<noscript>
 						<iframe src="http://www.google.com/recaptcha/api/noscript?k=6Lcs4-kSAAAAALK0dYkN8flAGKdz6-xgoFCZPsSI"
 						height="300" width="500" frameborder="0"></iframe><br>
@@ -34,15 +29,11 @@
 						<input type="hidden" name="recaptcha_response_field"
 						value="manual_challenge">
 					</noscript>
-	  			</td>
-	  		</tr>
-	  		<tr>
-	  			<td> </td>
-	  			<td> </td>
-	  			<td><input type="submit" value="Get Password"></td>
-	  		</tr>
-	  	</table>
-	  	<%= msg %>
-	</form>
-  </body>
+				</label>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Get Password</button>
+				<%= msg %>
+			</form>
+	  	</div>
+  	</body>
 </html>
+

@@ -1,4 +1,4 @@
-module.exports =	{
+exports.index =	{
 	dev: {
 		expressPort	: "3000",
 		saveEmail 	: "/var/www/js_test/node/myapp/public/email"
@@ -6,4 +6,5 @@ module.exports =	{
 	prod: {
 		expressPort: "3000"
 	}
-}
+};
+

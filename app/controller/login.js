@@ -41,7 +41,7 @@ exports.forgotpass = function (req,res) {
 	var email 		= req.body.email;
 	recaptcha(privateKey, ip, challenge, response, function(err) {
 		if (err) {
-			res.render('forgotpass',{title: "Forgot Password", msg: err.message});
+			res.render('forgotpass',{title: "Forgot Password", msg: err.message, login: ''});
 		} else {
 			mongoose.connection.close();
 			mongoose.connect('mongodb://localhost/myapp');
@@ -52,7 +52,7 @@ exports.forgotpass = function (req,res) {
 				if (getData > 0) {
 					writePassword(email,res);
 				} else {
-					res.render('forgotpass',{title: "Forgot Password", msg: "Provide Valid Email."});
+					res.render('forgotpass',{title: "Forgot Password", msg: "Provide Valid Email.", login: ''});
 				}
 			}
 			/*userModel.find({'email': email}, function (err, data) {
@@ -74,10 +74,10 @@ var writePassword = function (email, res) {
 		fs.writeFile('/var/www/js_test/node/myapp/public/pass/' + email + '.txt', writeData, function (err) {
 			if (err) {
 				console.log("Failed To Write File");
-				res.render('forgotpass',{title: "Forgot Password", msg: "Please Try Again."});
+				res.render('forgotpass',{title: "Forgot Password", msg: "Please Try Again.", login: ''});
 			} else {
 				console.log("Please open following link to complete registration : /var/www/js_test/node/myapp/public/email/" + email);
-				res.render('forgotpass',{title: "Forgot Password", msg: "Password Sent To " + email + "."});
+				res.render('forgotpass',{title: "Forgot Password", msg: "Password Sent To " + email + ".", login: ''});
 			}
 		});
 	});
