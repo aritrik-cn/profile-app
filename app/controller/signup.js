@@ -4,7 +4,16 @@ var url = require('url');
 //Load Node-modules for GOOGLE Sign Up
 var passport 		= require('passport'),
  	GoogleStrategy 	= require('passport-google').Strategy;
-
+passport.use(new GoogleStrategy({
+		returnURL	: 'http://localhost:3000/signup/google/return',
+		realm		: 'http://localhost:3000/'
+	},
+	function(identifier, profile, done) {
+		User.findOrCreate({ openId: identifier }, function(err, user) {
+			done(err, user);
+		});
+	}
+));
 // Database Connection (MongoDB)
 var mongoose = require( 'mongoose' );
 var dbconn	 = require(process.cwd() + '/config/db_config');
@@ -58,7 +67,7 @@ exports.addUser = function (req,res) {
 		});
 		//mongoose.connection.close();
 	} else {
-		res.render("signup",{ title: 'Signup', msg: "Please Provide your email to complete registration." });
+		res.redirect("signup");
 	}
 }
 //POST new user data
@@ -87,12 +96,13 @@ exports.submitUser = function (req, res) {
 
 
 // Sign Up With GOOGLE
-exports.google = function (req, res) {
-	//console.log("Sign up using google");
-	/*passport.use(new GoogleStrategy({
-	    returnURL: 'http://www.example.com/auth/google/return',
-	    realm: 'http://www.example.com/'
-	},*/
+exports.google = passport.authenticate('google');
+
+// GOOGLE Sign UP return
+//exports.googleReturn = passport.authenticate('google', { successRedirect: '/login',failureRedirect: '/' });
+exports.googleReturn = function (req, res) {
+	var parseUrl = url.parse(req.url).query;
+	res.send(parseUrl);
 }
 // Send Email to complete Registration
 
@@ -136,6 +146,5 @@ var sendEmail = function (email, res) {
 			console.log(err.stack)
 			res.send("Signup error:" + err);
 		}
-		
 	}
 }

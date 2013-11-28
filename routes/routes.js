@@ -24,6 +24,9 @@ module.exports = function (app) {
 	// Sign up with GOOGLE
 	app.get('/signup/google', signUp.google);
 
+	// GOOGLE Sign UP Return
+	app.get('/signup/google/return', signUp.googleReturn);
+
 	//User Login
 	var login = require("../app/controller/login");
 	app.get('/login', function (req, res) {

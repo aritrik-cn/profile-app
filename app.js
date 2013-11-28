@@ -30,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var port = process.env.PORT || config.expressPort;
 //Calling Router
 var routes = require('./routes/routes')(app);
+// Login Using Google
 
 // development only
 if ('development' == app.get('env')) {
@@ -40,13 +41,4 @@ if ('development' == app.get('env')) {
 http.createServer(app).listen(port, function(){
   console.log('Express server listening on port ' + port);
 });
-
-
-//socket io
-/*var io = require('socket.io').listen(app);
-io.sockets.on('connection', function(socket) {
-	socket.on('add_user', function (data) {
-		console.log("io called : " + data);
-	});
-});*/
 
