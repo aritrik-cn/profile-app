@@ -6,12 +6,12 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express"         : "3.4.4",
-    "ejs"             : "*",
-    "stylus"          : "*",
-    "nodemon"         : "latest",
-    "mongodb"         : "*",
-    "mongoose"        : "*",
-    "simple-recaptcha": "*"
+    "express" : "3.4.4",
+    "ejs"     : "*",
+    "stylus"  : "*",
+    "nodemon" : "latest",
+    "mongodb" : "*",
+    "mongoose": "*",
+    "socket.io": "*"
   }
 }

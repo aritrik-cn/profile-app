@@ -8,13 +8,13 @@ var dbconn	 = require(process.cwd() + '/config/db_config');
 
 exports.index = function (req, res) {
 	console.log("Signup controller (get)");
-	res.render("signup",{ title: 'Signup', msg: "" });
+	res.render("signup",{ title: 'Signup', msg: "", login: '' });
 };
 // Post Email for new user
 exports.addEmail = function (req, res) {
 	var email = req.body.email;
 	sendEmail (email);
-	res.render("signup",{ title: email, msg: "Email has been sent to " + email + ". Please Check to complete Registration." });
+	res.render("signup",{ title: email, msg: "Email has been sent to " + email + ". Please Check to complete Registration.", login: '' });
 };
 //Render New User Registration Page
 exports.addUser = function (req,res) {
@@ -35,7 +35,7 @@ exports.addUser = function (req,res) {
 				var getEmail = data[0].email;
 				console.log("email : " + getEmail);
 				if (email === getEmail) {
-					res.render("add_user", {title: "Add New User", data: data, msg: ""});
+					res.render("add_user", {title: "Add New User", data: data, msg: "", login: ''});
 				} else {
 					res.redirect("/login",{ title: 'Signup', msg: "No Valid Email Found." });
 				}

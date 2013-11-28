@@ -1,34 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <% include include/header %>
   </head>
   <body>
-  	<form name="add user" method="post" >
-	  	<table>
-	  		<tr>
-	  			<td>User Name</td>
-	  			<td>:</td>
-	  			<td><input type="text" name="uname"></td>
-	  		</tr>
-	  		<tr>
-	  			<td>Password</td>
-	  			<td>:</td>
-	  			<td><input type="password" name="pass"></td>
-	  		</tr>
-	  		<tr>
-	  			<td><input type="checkbox" name="remembr"> Remember Me </td>
-	  			<td> </td>
-	  			<td><input type="submit" value="Log In"></td>
-	  		</tr>
-	  		<tr>
-	  			<td> </td>
-	  			<td> </td>
-	  			<td><a href="forgotpass"> Forgot Password </a></td>
-	  		</tr>
-	  	</table>
-	  	<%= msg %>
-	</form>
+  	<div class="container" >
+  		<div class="header">
+	        <ul class="nav nav-pills pull-right">
+	          <li><a href="signup">New User</a></li>
+	          <li><a href="login">login</a></li>
+	        </ul>
+	        <h3 class="text-muted"><%= title %></h3>
+      	</div>
+		<form class="form-signin" style="max-width: 330px;padding: 15px;margin: 0 auto;" name="add user" method="post">
+			<h2 class="form-signin-heading">Please sign in</h2>
+			<input type="text" name="uname" class="form-control" placeholder="Email address" required="" autofocus="">
+			<input type="password" name="pass" class="form-control" placeholder="Password" required="">
+			<label class="checkbox">
+			<input type="checkbox" name="remembr"> Remember me
+			</label>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+		</form>
+		<%= msg %>
+  	</div>
   </body>
 </html>

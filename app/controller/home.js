@@ -11,7 +11,7 @@ exports.index = function (req,res) {
 		var user = req.session.user;
 		//var userModelData = userModel.home(user);
 		//console.log("userModelData : " + JSON.stringify(userModelData));
-		res.render("home", {title: "Home", uname: req.session.user});
+		res.render("home", {title: "Home", uname: req.session.user, login: 'True'});
 	} else {
     	res.redirect('/login');
 	}
@@ -24,7 +24,7 @@ exports.renderUpdate = function (req, res) {
 		var userModel = mongoose.model ('users', dbconn.addUser);
 		userModel.find({'uname': req.session.user}).exec(function (err, data) {
 			console.log("user data : " + data);
-			res.render("add_user", {title: "Update User", data: data, msg: ""});
+			res.render("add_user", {title: "Update User", data: data, msg: "", login: 'True'});
 		})
 	} else {
 		res.redirect('/login');
@@ -49,7 +49,7 @@ exports.postUpdate = function (req, res) {
 		updateModel.find({'uname': uname}, findCallback);
 		function findCallback (err, getData) {
 			console.log("User Data : " + getData);
-			res.render("add_user", {title: "Update User", data: getData, msg: "Password Hasbeen Updated."});
+			res.render("add_user", {title: "Update User", data: getData, msg: "Password Hasbeen Updated.", login:'True'});
 		}
 		//res.send('User Data successfully Updated.' + data );
 	

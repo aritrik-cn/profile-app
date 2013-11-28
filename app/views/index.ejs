@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <% include include/header %>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <a href="signup"> Add New User </a></br>
-    <a href="login"> Login </a>
+    <div class="container">
+        <div class="header">
+            <ul class="nav nav-pills pull-right">
+                  <li><a href="signup">New User</a></li>
+                  <li><a href="login">login</a></li>
+            </ul>
+        <h3 class="text-muted"><%= title %></h3>
+        </div>
+        <div class="jumbotron">
+            <h1>Welcome to <%= title %></h1>
+        </div>
+    </div> 
   </body>
 </html>

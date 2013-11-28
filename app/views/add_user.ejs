@@ -1,39 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-  <% if (data[0].pass) { %> <a href="home"> Home </a> <% } %>
-  	<form name="add user" method="post" >
-	  	<table>
-	  		<tr>
-	  			<td>Email</td>
-	  			<td>:</td>
-	  			<td><input type="text" name="email" readonly value="<%= data[0].email %>"></td>
-	  		</tr>
-	  		<tr>
-	  			<td>User Name</td>
-	  			<td>:</td>
-	  			<td><input type="text" name="uname" <% if (data[0].uname) { %> value="<%= data[0].uname %>" readonly <% } %> required></td>
-	  		</tr>
-	  		<tr>
-	  			<td> <% if (data[0].pass) { %> New Password <% } else { %> Password <% } %></td>
-	  			<td>:</td>
-	  			<td><input type="password" name="pass" value="" required></td>
-	  		</tr>
-	  		<tr>
-	  			<td></td>
-	  			<td></td>
-	  			<td><input type="submit"></td>
-	  		</tr>
-	  		<tr>
-	  			<td></td>
-	  			<td></td>
-	  			<td><%= msg %></td>
-	  		</tr>
-	  	</table>
-	</form>
-  </body>
+	<head>
+		<% include include/header %>
+	</head>
+	<body>
+		<div class="container" >
+  		<div class="header">
+	        <ul class="nav nav-pills pull-right">
+	        	<% include include/menu %>
+	        </ul>
+	        <h3 class="text-muted"><%= title %></h3>
+      	</div>
+		<form class="form-signin" style="max-width: 330px;padding: 15px;margin: 0 auto;" name="add user" method="post">
+			<h2 class="form-signin-heading"><% if (data[0].pass) { %> Update Details  <% } else { %> Provede User Details <% } %></h2>
+			<input type="text" name="email" class="form-control" placeholder="Email address" required="" readonly value="<%= data[0].email %>">
+			<input type="text" name="uname" class="form-control" placeholder="User Name" autofocus="" <% if (data[0].uname) { %> value="<%= data[0].uname %>" readonly <% } %> required>
+			<input type="password" name="pass" class="form-control" placeholder="<% if (data[0].pass) { %> New Password <% } else { %> Password <% } %>" required="">
+			<label class="checkbox"></label>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+			<%= msg %>
+		</form>
+	</div>
+	</body>
 </html>
