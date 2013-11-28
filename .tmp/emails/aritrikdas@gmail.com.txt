@@ -1,2 +1,0 @@
-Please Click on following link. 
-http://localhost:3000/adduser/?eid:aritrikdas@gmail.com___7546472277026623
