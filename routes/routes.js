@@ -21,6 +21,9 @@ module.exports = function (app) {
 	//Post New Registration 
 	app.post('/adduser',signUp.submitUser);
 
+	// Sign up with GOOGLE
+	app.get('/signup/google', signUp.google);
+
 	//User Login
 	var login = require("../app/controller/login");
 	app.get('/login', function (req, res) {
@@ -55,4 +58,6 @@ module.exports = function (app) {
 
 	// POST Forgot password Data
 	app.post('/forgotpass', login.forgotpass);
+
+
 }

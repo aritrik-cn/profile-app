@@ -9,7 +9,7 @@ var path 	= require('path');
 
 //Define Global Varriabls
 GLOBAL.config = require(process.cwd() + '/config/config').index [process.env.NODE_ENV || "dev"];
-//console.log("Config : " + JSON.stringify(GLOBAL.config, null, 4));
+console.log("Config : " + JSON.stringify(GLOBAL.config, null, 4));
 
 
 // all environments

@@ -1,7 +1,7 @@
 exports.index =	{
 	dev: {
 		expressPort	: "3000",
-		saveEmail 	: "/var/www/js_test/node/myapp/public/email"
+		saveEmail 	: process.cwd()
 	},
 	prod: {
 		expressPort: "3000"
